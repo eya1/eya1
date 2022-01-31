@@ -27,21 +27,12 @@ void setup() {
   lcd.begin(16,2); 
   analogWrite(VO, 50);
   Serial.begin(9600);
-
    myservo.attach(13); 
 }
 
 void loop() {
-
-  if (mySerial.available())  
-  Serial.write(mySerial.read());
-  
-  if (Serial.available())  
-  mySerial.write(Serial.read());
-  
  int light = map(analogRead(ldr_pin), 1023, 0, 50, 0);
  int hum = map(analogRead(humidity_sensor_pin), 0, 1023, 100, 0);
- 
     lcd.clear();
     lcd.setCursor(0,0);
     lcd.print("Regando");  
@@ -53,24 +44,17 @@ void loop() {
     lcd.setCursor(0,1);
     lcd.print("Groud_humidity");
     lcd.print(hum);
-    lcd.print("%");
-   
-      
+    lcd.print("%");  
 if (Serial.available() > 0){
-  
  if( hum <= 20 && value == 'p'  ) {
-  
  digitalWrite(water_pump_pin, HIGH)
- Serial.println("Irrigate");
+ Serial.println("regar");
  analogWrite(water_pump_pin, water_pump_speed);
  delay (3000);
- 
  }
- 
  else{
  digitalWrite(water_pump_pin, LOW);
- Serial.println("Do not irrigate");
- 
+ Serial.println("no regar");
 }
  }
 delay (300);
