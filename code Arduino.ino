@@ -46,6 +46,8 @@ void loop() {
     lcd.print(hum);
     lcd.print("%");  
 if (Serial.available() > 0){
+     value= Serial.read();  
+     Serial.println(value);
  if( hum <= 20 && value == 'p'  ) {
  digitalWrite(water_pump_pin, HIGH)
  Serial.println("regar");
@@ -59,17 +61,14 @@ if (Serial.available() > 0){
  }
 delay (300);
 if (Serial.available() > 0){
-
      value= Serial.read();  
      Serial.println(value);
      if (value == 'c')
       for (pos = 0; pos <= 180; pos += 1) { 
-    // in steps of 1 degree
        myservo.write(pos);              
        delay(15);                       
   }
   for (pos = 180; pos >= 0; pos -= 1) {
-      myservo.write(pos);              
-  }
+      myservo.write(pos);}
 }
 }
