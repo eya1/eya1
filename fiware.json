@@ -1,0 +1,35 @@
+ «id»: «Practica»,
+
+        «type»: «Medida»,
+
+        «Temperatura»: {
+
+            «type»: «Integer»,
+
+            «value»: 25,
+
+            «metadata»: {}
+
+        },
+
+        «Humedad»: {
+
+            «type»: «Float»,
+
+            «value»: 50,
+
+            «metadata»: {
+
+                «accuracy»: {
+
+                    «type»: «Float»,
+
+                    «value»: 9
+
+                }
+
+            }
+
+        }
+
+    }
